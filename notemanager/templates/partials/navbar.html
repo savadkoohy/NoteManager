@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="{% url 'notes:note_list' %}">مدیریت یادداشت‌ها</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'notes:note_create' %}">افزودن یادداشت</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'main:edit_profile' %}"><i class="bi bi-person-circle"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'main:password_change' %}">تغییر رمز</a>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link disabled">سلام {{ user.username }} 👋</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{% url 'main:logout' %}"><i class="bi bi-box-arrow-right"></i> خروج </a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'main:login' %}">ورود</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'password_reset' %}">فراموشی رمز؟</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'main:signup' %}">ثبت‌نام</a>
+          </li>
+        {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,16 @@
+{% extends 'main-templates.html' %}
+
+{% block title %}حذف یادداشت{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2>آیا مطمئنی می‌خواهی "{{ note.title }}" را حذف کنی؟</h2>
+    <div class="row">
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">بله، حذف شود</button>
+            <a href="{% url 'notes:note_list' %}" class="btn btn-secondary">لغو</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

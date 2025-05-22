@@ -1,0 +1,14 @@
+{% extends "main-templates.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+  <h4>ویرایش پروفایل</h4>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
+    {% url 'main:edit_profile' %}
+  </form>
+</div>
+{% endblock %}
